@@ -4,6 +4,8 @@ import dev.java10x.CadastroNinja.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_Missoes")
 @Data
@@ -19,8 +21,7 @@ public class MissoesModel {
     @Column(name = "Dificuldade_missao")
     private String dificuldade;
 
-    @Column(name = "Chave_estrangeira")
-    @OneToMany (mappedBy = "missoes")
-    private NinjaModel ninja;
-
+    @OneToMany(mappedBy = "missoes")
+    @Column(name = "Ninja_atribuido")
+    private List<NinjaModel> ninjas;
 }
