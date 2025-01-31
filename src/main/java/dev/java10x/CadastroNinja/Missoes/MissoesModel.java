@@ -1,5 +1,6 @@
 package dev.java10x.CadastroNinja.Missoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.java10x.CadastroNinja.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -23,5 +24,6 @@ public class MissoesModel {
 
     @OneToMany(mappedBy = "missoes")
     @Column(name = "Ninja_atribuido")
+    @JsonIgnore
     private List<NinjaModel> ninjas;
 }
