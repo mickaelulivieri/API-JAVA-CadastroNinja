@@ -32,8 +32,12 @@ public class NinjaService {
     }
 
     //criar um novo ninja
-    @PostMapping("/criar")
     public NinjaModel criarNinja(NinjaModel ninja){
         return ninjaRepository.save(ninja);
+    }
+
+    //deletar um ninja
+    public void deletarNinjaPorId(Long id){
+        ninjaRepository.deleteById(id);
     }
 }
