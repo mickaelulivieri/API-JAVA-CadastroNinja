@@ -13,9 +13,12 @@ public class NinjaService {
     //atributo para injecao de dependencia
     private NinjaRepository ninjaRepository;
 
+    private final NinjaMapper ninjaMapper;
+    
     //construtor para injecao de dependencia
-    public NinjaService(NinjaRepository ninjaRepository){
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper){
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     //metodos com logica de negocio
@@ -32,8 +35,10 @@ public class NinjaService {
     }
 
     //criar um novo ninja
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO){
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     //deletar um ninja
